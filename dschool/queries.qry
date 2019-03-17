@@ -1,0 +1,52 @@
+query getStudentCoursesOfCourse{
+  description: "find all students of course"
+  statement:
+    SELECT org.holub.dschool.StudentCourse
+    WHERE (course == _$course)
+}
+
+query getAttendanceOfStudent{
+  description: "find all attendances of theory lessons of student"
+  statement:
+    SELECT org.holub.dschool.Attendance
+    WHERE (student == _$student AND theory == _$theory)
+}
+
+query getInstructorsDrives{
+  description: "find all driving lessons of instructor"
+  statement:
+    SELECT org.holub.dschool.DriveLesson
+    WHERE (instructor == _$instructor)
+}
+
+query getInstructorsTheory{
+  description: "find all theory lessons of instructor"
+  statement:
+    SELECT org.holub.dschool.Course
+    WHERE (instructor == _$instructor)
+}
+
+query getStudentLessonDrives{
+  description: "find all driving lessons of student"
+  statement:
+    SELECT org.holub.dschool.DriveLesson
+    WHERE (studentCourse == _$studentCourse)
+}
+
+query getStudentsCourses{
+  description: "find all driving lessons of student"
+  statement:
+    SELECT org.holub.dschool.StudentCourse
+    WHERE (student == _$student)
+}
+
+query getStudentTheory{
+  description: "find all theory lessons of student"
+  statement:
+    SELECT org.holub.dschool.Course
+    WHERE (instructor == _$instructor)
+}
+
+
+
+
