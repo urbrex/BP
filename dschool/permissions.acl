@@ -15,6 +15,9 @@
 /**
  * Sample access control list.
  */
+
+
+
 rule EverybodyCanReadEverything {
     description: "Allow all participants read access to all resources"
     participant: "org.holub.dschool.*"
@@ -23,20 +26,26 @@ rule EverybodyCanReadEverything {
     action: ALLOW
 }
 
-rule EverybodyCanSubmitTransactions {
+rule PolicemanCanSubmitEvaluation {
     description: "Allow all participants to submit transactions"
-    participant: "org.holub.dschool.*"
-    operation: CREATE
-    resource: "org.holub.dschool.*"
+    participant: "org.holub.dschool.Police"
+    operation: ALL
+    resource: "org.holub.dschool.CourseEvaluation"
     action: ALLOW
 }
+rule OthersCannotSubmitEvaluation {
+    description: "Allow all participants to submit transactions"
+    participant: "org.holub.dschool.*"
+    operation: CREATE, UPDATE
+    resource: "org.holub.dschool.CourseEvaluation"
+    action: DENY
+}
 
-rule OwnerHasFullAccessToTheirAssets {
-    description: "Allow all participants full access to their assets"
-    participant(p): "org.holub.dschool.*"
+rule InstructorCanReadAndSubmitAnything{
+    description: "Allow all participants read access to all resources"
+    participant: "org.holub.dschool.Instructor"
     operation: ALL
-    resource(r): "org.holub.dschool.SampleAsset"
-    condition: (r.owner.getIdentifier() === p.getIdentifier())
+    resource: "org.holub.dschool.*"
     action: ALLOW
 }
 

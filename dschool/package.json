@@ -3,7 +3,7 @@
     "composer": "^0.20.7"
   },
   "name": "dschool",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "blockchain network for driving school",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/dschool.bna",
@@ -32,5 +32,8 @@
     "nyc": "latest",
     "mkdirp": "latest",
     "mocha": "latest"
+  },
+  "dependencies": {
+    "passport-facebook": "^3.0.0"
   }
 }

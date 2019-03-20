@@ -2,7 +2,7 @@ query getStudentCoursesOfCourse{
   description: "find all students of course"
   statement:
     SELECT org.holub.dschool.StudentCourse
-    WHERE (course == _$course)
+    WHERE (course == "org.holub.dschool.Course@S1")
 }
 
 query getAttendanceOfStudent{

@@ -23,7 +23,6 @@ abstract participant Person identified by email {
   o String name
   o String surname
   o Address addres optional
-  o String chipNumber
 }
 
 concept Address {
@@ -72,22 +71,17 @@ enum CourseType {
 asset Course identified by Coursekey {
   o String Coursekey
   o CourseStatus status
-  o DateTime started
+  o DateTime started optional
   o DateTime finished optional
   o CourseType type
-  o Double numberOfStudents
-  o Double studentsFinishedCourse optional
   --> Instructor instructor
-  --> TheoryLesson[] theory optional
 }
 
 asset StudentCourse identified by CourseKey {
-  o String CourseKey 
+  o String CourseKey
   --> Course course 
   --> Student student 
   o CourseEvaluation[] evaluations optional
-  o DriveLesson[] driveLesson optional
-  o Double failedAtempts 
   o Double paid
   o Boolean feeStamp
 }
@@ -114,7 +108,8 @@ transaction CourseEvaluation {
   --> Police testAdministrator
 }
 
-transaction DriveLesson {
+asset DriveLesson identified by id {
+  o String id
   --> Instructor instructor
   --> StudentCourse studentCourse
   o DateTime date
@@ -132,27 +127,7 @@ transaction CreateCourse {
 }
 
 transaction CreateStudentCourse {
+  --> StudentCourse courses
 }
-
-asset SampleAsset identified by assetId {
-  o String assetId
-  o String value
+transaction SetupDrivingSchool {
 }
-
-event SampleEvent {
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
-}
-
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
-}
-
-transaction SampleTransaction {
-  --> SampleAsset asset
-  o String newValue
-}
-
