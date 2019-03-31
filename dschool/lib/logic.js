@@ -25,6 +25,7 @@
 async function setupDrivingSchool(setupDrivingSchool) {  // eslint-disable-line no-unused-vars
     
     const NS = 'org.holub.dschool'
+    const factory = getFactory();
     
     // create instructor
     const instructorAddress = factory.newConcept(NS, 'Address');
@@ -37,7 +38,7 @@ async function setupDrivingSchool(setupDrivingSchool) {  // eslint-disable-line 
     instructor.email = 'MK@mail';
     instructor.name = 'Maros';
     instructor.surname = 'Kabac';
-    instructor.phone = 0904555555;
+    instructor.phone = 904555555;
     instructor.idCard = 'cisloKarty';
     instructor.dateOfBirth = setupDrivingSchool.timestamp;
 
@@ -51,7 +52,7 @@ async function setupDrivingSchool(setupDrivingSchool) {  // eslint-disable-line 
     student1.address = studentAddress1;
     student1.name = 'Nikola';
     student1.surname = 'Strokova';
-    student1.phone = 0904555555;
+    student1.phone = 904555555;
     student1.idCard = 'cisloKarty';
     student1.dateOfBirth = setupDrivingSchool.timestamp;
 
@@ -64,7 +65,7 @@ async function setupDrivingSchool(setupDrivingSchool) {  // eslint-disable-line 
     student2.address = studentAddress2;
     student2.name = 'Jan';
     student2.surname = 'Kubica';
-    student2.phone = 0904555555;
+    student2.phone = 904555555;
     student2.idCard = 'cisloKarty';
     student2.dateOfBirth = setupDrivingSchool.timestamp;
 
@@ -77,22 +78,19 @@ async function setupDrivingSchool(setupDrivingSchool) {  // eslint-disable-line 
     student3.address = studentAddress3;
     student3.name = 'Ivan';
     student3.surname = 'Stevanka';
-    student3.phone = 0904555555;
+    student3.phone = 904555555;
     student3.idCard = 'cisloKarty';
     student3.dateOfBirth = setupDrivingSchool.timestamp;
 
-    const policeman = factory.newConcept(NS, 'Address');
-    policeman.city = 'USA';
-    policeman.street = 'Valley of Death';
-    policeman.zip = '000 00';
+    const policemanAddress = factory.newConcept(NS, 'Address');
+    policemanAddress.city = 'USA';
+    policemanAddress.street = 'Valley of Death';
+    policemanAddress.zip = '000 00';
 
     const policeman = factory.newResource(NS, 'Police', 'BW@mail');
-    policeman.address = studentAddress3;
+    policeman.address = policemanAddress;
     policeman.name = 'Bruce';
     policeman.surname = 'Willis';
-    policeman.phone = 0904555555;
-    policeman.idCard = 'vsetky';
-    policeman.dateOfBirth = setupDrivingSchool.timestamp;
 
     // add instructor students and policeman
     const studentsRegistry = await getParticipantRegistry(NS + '.Student');
@@ -106,7 +104,7 @@ async function setupDrivingSchool(setupDrivingSchool) {  // eslint-disable-line 
     const course = factory.newResource(NS, 'Course', 'C1');
     course.instructor = factory.newRelationship(NS, 'Instructor', 'MK@mail');
     course.status = 'ACTIVE';
-    course.Type = 'B';
+    course.type = 'B';
 
     const StudentCourse1 = factory.newResource(NS, 'StudentCourse', 'SC1');
     StudentCourse1.course = factory.newRelationship(NS, 'Course', 'C1');
@@ -194,6 +192,52 @@ async function setupDrivingSchool(setupDrivingSchool) {  // eslint-disable-line 
     const driveCourseRegistry = await getAssetRegistry(NS + '.DriveLesson');
     await driveCourseRegistry.addAll([drive1,drive2,drive3,drive4,drive5,drive6]);
 }
+
+ /**
+ * Create attendance of student
+ * @param {org.holub.dschool.Attendance} attendance - dreiving lesson transaction
+ * @transaction
+ */
+
+ async function attendance(attendance) {
+   const factory = getFactory();
+   const NS = 'org.holub.dschool'
+   
+   const theoryLesson = attendance.theory;
+   
+    if (theoryLesson.attendance) {
+        theoryLesson.attendance.push(attendance);
+    } else {
+        theoryLesson.attendance = [attendance];
+    }
+
+   	const theoryRegistry = await getAssetRegistry('org.holub.dschool.TheoryLesson');
+    await theoryRegistry.update(theoryLesson);
+ }
+
+/**
+ * Create attendance of student
+ * @param {org.holub.dschool.CourseEvaluation} courseEvaluation - dreiving lesson transaction
+ * @transaction
+ */
+
+async function courseEvaluation(courseEvaluation) {
+    const factory = getFactory();
+    const NS = 'org.holub.dschool'
+    
+    const studentCourse = courseEvaluation.studentCourse;
+    
+     if (studentCourse.evaluations) {
+        studentCourse.evaluations.push(courseEvaluation);
+     } else {
+        studentCourse.evaluations = [courseEvaluation];
+     }
+ 
+    const studentCourseRegistry = await getAssetRegistry('org.holub.dschool.StudentCourse');
+    await studentCourseRegistry.update(studentCourse);
+  }
+ 
+  
 
  /**
  * GET all theory lessons and drives of student

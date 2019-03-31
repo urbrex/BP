@@ -22,7 +22,7 @@ abstract participant Person identified by email {
   o String email
   o String name
   o String surname
-  o Address addres optional
+  o Address address optional
 }
 
 concept Address {
@@ -98,6 +98,14 @@ asset TheoryLesson identified by TheoryKey {
   o Boolean mandatory
 }
 
+asset DriveLesson identified by id {
+  o String id
+  --> Instructor instructor
+  --> StudentCourse studentCourse
+  o DateTime date
+  o Gps[] gpsInfo optional
+}
+
 transaction CourseEvaluation {
   o DateTime dateOfTest
   o String testResult
@@ -108,14 +116,6 @@ transaction CourseEvaluation {
   --> Police testAdministrator
 }
 
-asset DriveLesson identified by id {
-  o String id
-  --> Instructor instructor
-  --> StudentCourse studentCourse
-  o DateTime date
-  o Gps[] gpsInfo optional
-}
-
 transaction Attendance {
   --> Student student
   --> TheoryLesson theory
@@ -123,11 +123,5 @@ transaction Attendance {
   o DateTime departure optional
 }
 
-transaction CreateCourse {
-}
-
-transaction CreateStudentCourse {
-  --> StudentCourse courses
-}
 transaction SetupDrivingSchool {
 }
