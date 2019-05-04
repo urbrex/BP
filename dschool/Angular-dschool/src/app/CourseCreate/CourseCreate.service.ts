@@ -27,8 +27,8 @@ export class CourseCreateService {
   constructor(private dataService: DataService<Course>) {
   };
 
-  public getAll(): Observable<Course[]> {
-    return this.dataService.getAll(this.NAMESPACE);
+  public getAll(filter: string): Observable<Course[]> {
+    return this.dataService.getAll(this.NAMESPACE+filter);
   }
 
   public getAsset(id: any): Observable<Course> {

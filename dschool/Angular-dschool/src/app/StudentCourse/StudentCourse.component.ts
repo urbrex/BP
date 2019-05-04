@@ -56,7 +56,7 @@ export class StudentCourseComponent implements OnInit {
 
   loadAll(): Promise<any> {
     const tempList = [];
-    return this.serviceStudentCourse.getAll()
+    return this.serviceStudentCourse.getAll("")
     .toPromise()
     .then((result) => {
       this.errorMessage = null;

@@ -27,7 +27,10 @@ export class StudentCourseService {
   constructor(private dataService: DataService<StudentCourse>) {
   };
 
-  public getAll(): Observable<StudentCourse[]> {
+  public getAll(filter: string): Observable<StudentCourse[]> {
+    if(filter)
+    return this.dataService.getAll(this.NAMESPACE+filter);
+    else 
     return this.dataService.getAll(this.NAMESPACE);
   }
 
