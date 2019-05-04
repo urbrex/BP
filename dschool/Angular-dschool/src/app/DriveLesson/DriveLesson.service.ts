@@ -28,24 +28,23 @@ export class DriveLessonService {
   };
 
   public getAll(): Observable<DriveLesson[]> {
-      return this.dataService.getAll(this.NAMESPACE);
+    return this.dataService.getAll(this.NAMESPACE);
   }
 
-  public getTransaction(id: any): Observable<DriveLesson> {
+  public getAsset(id: any): Observable<DriveLesson> {
     return this.dataService.getSingle(this.NAMESPACE, id);
   }
 
-  public addTransaction(itemToAdd: any): Observable<DriveLesson> {
+  public addAsset(itemToAdd: any): Observable<DriveLesson> {
     return this.dataService.add(this.NAMESPACE, itemToAdd);
   }
 
-  public updateTransaction(id: any, itemToUpdate: any): Observable<DriveLesson> {
+  public updateAsset(id: any, itemToUpdate: any): Observable<DriveLesson> {
     return this.dataService.update(this.NAMESPACE, id, itemToUpdate);
   }
 
-  public deleteTransaction(id: any): Observable<DriveLesson> {
+  public deleteAsset(id: any): Observable<DriveLesson> {
     return this.dataService.delete(this.NAMESPACE, id);
   }
 
 }
-

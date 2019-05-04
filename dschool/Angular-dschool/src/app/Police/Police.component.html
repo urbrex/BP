@@ -16,64 +16,43 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="addParticipantModalLabel">Create participant</h4>
-            <p class="modal-intro">Enter the required values below.</p>
+          <h4 class="modal-title" id="addParticipantModalLabel">Vytvor účastníka</h4>
+            <p class="modal-intro">Vyplň údaje nachádzajúce sa nižšie.</p>
         </div>
         <form [formGroup]="myForm">
           <div class="modal-body">
-  
-  
-            
-  
-              
+
                 <div class="form-group text-left">
                   <label for="email">email</label>
-                  
-                    <input formControlName="email" type="text" class="form-control">
-                  
+                    <input formControlName="email" type="text" class="form-control">                  
                 </div>
-              
-            
-  
-              
+          
                 <div class="form-group text-left">
-                  <label for="name">name</label>
-                  
-                    <input formControlName="name" type="text" class="form-control">
-                  
+                  <label for="name">Meno</label>                
+                    <input formControlName="name" type="text" class="form-control">                  
                 </div>
-              
-            
-  
-              
+ 
                 <div class="form-group text-left">
-                  <label for="surname">surname</label>
-                  
-                    <input formControlName="surname" type="text" class="form-control">
-                  
+                  <label for="surname">Priezvisko</label>                  
+                    <input formControlName="surname" type="text" class="form-control">                  
                 </div>
-              
-            
-  
-              
+
+                <h4>Adresa</h4>
+                                         
                 <div class="form-group text-left">
-                  <label for="addres">addres</label>
-                  
-                      <textarea formControlName="addres" class="form-control" rows="3"></textarea>
-                  
-                </div>
-              
-            
-  
-              
+                  <label for="city">Mesto</label>                  
+                      <textarea formControlName="city" class="form-control" type="text"></textarea>                 
+                </div>     
+                
                 <div class="form-group text-left">
-                  <label for="chipNumber">chipNumber</label>
-                  
-                    <input formControlName="chipNumber" type="text" class="form-control">
-                  
-                </div>
-              
-            
+                  <label for="street">Ulica</label>                  
+                      <textarea formControlName="street" class="form-control" type="text"></textarea>                 
+                </div>   
+
+                <div class="form-group text-left">
+                  <label for="zip">PSC</label>                  
+                      <textarea formControlName="zip" class="form-control" type="text"></textarea>                 
+                </div>   
   
           </div>
           <div class="modal-footer">
@@ -94,7 +73,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="updateParticipantModalLabel">Update Participant</h4>
+          <h4 class="modal-title" id="updateParticipantModalLabel">Uprav informácie o členovi polície</h4>
         </div>
         <form [formGroup]="myForm">
           <div class="modal-body">
@@ -111,7 +90,7 @@
               </div>
             
               <div class="form-group text-left">
-                <label for="name">name</label>
+                <label for="name">Meno</label>
   
                 
                   <input [ngModel]="name"formControlName="name" type="text" class="form-control">
@@ -120,33 +99,30 @@
               </div>
             
               <div class="form-group text-left">
-                <label for="surname">surname</label>
+                <label for="surname">Priezvisko</label>
   
                 
                   <input [ngModel]="surname"formControlName="surname" type="text" class="form-control">
                 
   
               </div>
-            
+
+              <h4>Adresa</h4>
+                                         
               <div class="form-group text-left">
-                <label for="addres">addres</label>
-  
-                
-                  
-                    <textarea [ngModel]="addres" formControlName="addres" class="form-control" rows="3"></textarea>
-                  
-                
-  
-              </div>
-            
+                <label for="city">Mesto</label>                  
+                    <textarea formControlName="city" class="form-control" type="text"></textarea>                 
+              </div>     
+              
               <div class="form-group text-left">
-                <label for="chipNumber">chipNumber</label>
-  
-                
-                  <input [ngModel]="chipNumber"formControlName="chipNumber" type="text" class="form-control">
-                
-  
-              </div>
+                <label for="street">Ulica</label>                  
+                    <textarea formControlName="street" class="form-control" type="text"></textarea>                 
+              </div>   
+
+              <div class="form-group text-left">
+                <label for="zip">PSC</label>                  
+                    <textarea formControlName="zip" class="form-control" type="text"></textarea>                 
+              </div>   
             
   
   
@@ -171,7 +147,7 @@
         </div>
         <form [formGroup]="myForm">
           <div class="modal-body">
-            Are you sure you want to delete this participant?
+            Určite chceš vymazať ohto člena polície?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
@@ -208,7 +184,7 @@
                   <path fill-rule="evenodd" d="M5.5,4.5 L9.5,4.5 L10,4.5 L10,5.5 L9.5,5.5 L5.5,5.5 L5.5,9.5 L5.5,10 L4.5,10 L4.5,9.5 L4.5,5.5 L0.5,5.5 L0,5.5 L0,4.5 L0.5,4.5 L4.5,4.5 L4.5,0.5 L4.5,0 L5.5,0 L5.5,0.5 L5.5,4.5 Z"/>
                 </svg>
             </span>
-          Create Participant
+          Vytvor člena polície
         </button>
       </div>
     </div>
@@ -221,15 +197,13 @@
               
                   <th class="info">email</th>
               
-                  <th class="info">name</th>
+                  <th class="info">Meno</th>
               
-                  <th class="info">surname</th>
+                  <th class="info">Priezvisko</th>
               
-                  <th class="info">addres</th>
+                  <th class="info">Adresa</th>
               
-                  <th class="info">chipNumber</th>
-              
-                <th class="info-actions">Actions</th>
+                <th class="info-actions">Akcie</th>
             </tr>
           </thead>
           <tbody>
@@ -242,9 +216,7 @@
               
                   <td class="participant-properties">{{participant.surname}}</td>
               
-                  <td class="participant-properties">{{participant.addres}}</td>
-              
-                  <td class="participant-properties">{{participant.chipNumber}}</td>
+                  <td class="participant-properties">{{participant.address}}</td>
               
               <td>
                 <button (click)="getForm(participant.email);" type="button" class="btn btn-update" data-toggle="modal" data-target="#updateParticipantModal">

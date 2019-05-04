@@ -16,8 +16,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="addTransactionModalLabel">Create Transaction</h4>
-        <p class="modal-intro">Enter the required values below.</p>
+        <h4 class="modal-title" id="addTransactionModalLabel">Vlož záznam o skúške</h4>
+        <p class="modal-intro">Vlož nasledovné údaje.</p>
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
@@ -27,7 +27,7 @@
 
             
               <div class="form-group text-left">
-                <label for="dateOfTest">dateOfTest</label>
+                <label for="dateOfTest">Dátum testovania</label>
                 
                   <input formControlName="dateOfTest" type="text" class="form-control">
                 
@@ -37,7 +37,7 @@
 
             
               <div class="form-group text-left">
-                <label for="testResult">testResult</label>
+                <label for="testResult">Výsledok teoretickej časti</label>
                 
                   <input formControlName="testResult" type="text" class="form-control">
                 
@@ -47,7 +47,7 @@
 
             
               <div class="form-group text-left">
-                <label for="parkingResult">parkingResult</label>
+                <label for="parkingResult">Výsledky cvičiska</label>
                 
                   <input formControlName="parkingResult" type="text" class="form-control">
                 
@@ -57,7 +57,7 @@
 
             
               <div class="form-group text-left">
-                <label for="driveResult">driveResult</label>
+                <label for="driveResult">Výsledky jazdy</label>
                 
                   <input formControlName="driveResult" type="text" class="form-control">
                 
@@ -67,7 +67,7 @@
 
             
               <div class="form-group text-left">
-                <label for="detail">detail</label>
+                <label for="detail">Poznámky a doplnkové info ku skúške</label>
                 
                   <input formControlName="detail" type="text" class="form-control">
                 
@@ -77,7 +77,7 @@
 
             
               <div class="form-group text-left">
-                <label for="studentCourse">studentCourse</label>
+                <label for="studentCourse">Študentský kurz</label>
                 
                     <textarea formControlName="studentCourse" class="form-control" rows="3"></textarea>
                 
@@ -87,7 +87,7 @@
 
             
               <div class="form-group text-left">
-                <label for="testAdministrator">testAdministrator</label>
+                <label for="testAdministrator">Administrátor skúšky</label>
                 
                     <textarea formControlName="testAdministrator" class="form-control" rows="3"></textarea>
                 
@@ -104,7 +104,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button (click)="addTransaction(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Confirm</button>
+            <button (click)="addTransaction(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Vykonaj</button>
         </div>
       </form>
     </div>
@@ -126,36 +126,36 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
-          When invoked, this transaction will have the following attributes:
+          Na vykonanie tejto akcie sú potrebné nasledovné údaje:
           <br>
           <ul>
             
               
-                <li><span class="attribute"><b>dateOfTest</b></span></li>
+                <li><span class="attribute"><b>Dátum testovania</b></span></li>
               
             
               
-                <li><span class="attribute"><b>testResult</b></span></li>
+                <li><span class="attribute"><b>Výsledok teoretickej časti</b></span></li>
               
             
               
-                <li><span class="attribute"><b>parkingResult</b></span></li>
+                <li><span class="attribute"><b>Výsledky cvičiska </b></span></li>
               
             
               
-                <li><span class="attribute"><b>driveResult</b></span></li>
+                <li><span class="attribute"><b>Výsledky jazdy</b></span></li>
               
             
               
-                <li><span class="attribute"><b>detail</b></span></li>
+                <li><span class="attribute"><b>Doplňujúce infformácie</b></span></li>
               
             
               
-                <li><span class="attribute"><b>studentCourse</b></span></li>
+                <li><span class="attribute"><b>Študentský kurz</b></span></li>
               
             
               
-                <li><span class="attribute"><b>testAdministrator</b></span></li>
+                <li><span class="attribute"><b>Administrátor testovania</b></span></li>
               
             
               
@@ -165,7 +165,7 @@
           </ul>
         </div>
       </div>
-      <button (click)="resetForm();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTransactionModal">Invoke</button>
+      <button (click)="resetForm();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTransactionModal">Vykonaj</button>
     </div>
   </div>
 </div>

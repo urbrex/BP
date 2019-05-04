@@ -29,14 +29,17 @@ export class PoliceComponent implements OnInit {
 
   private allParticipants;
   private participant;
+  private Paddress;
   private currentId;
   private errorMessage;
 
   email = new FormControl('', Validators.required);
   name = new FormControl('', Validators.required);
   surname = new FormControl('', Validators.required);
-  addres = new FormControl('', Validators.required);
-  chipNumber = new FormControl('', Validators.required);
+  address = new FormControl('', Validators.required);
+  city = new FormControl('', Validators.required);
+  street = new FormControl('', Validators.required);
+  zip = new FormControl('', Validators.required);
 
 
   constructor(public servicePolice: PoliceService, fb: FormBuilder) {
@@ -44,8 +47,10 @@ export class PoliceComponent implements OnInit {
       email: this.email,
       name: this.name,
       surname: this.surname,
-      addres: this.addres,
-      chipNumber: this.chipNumber
+      address: this.address,
+      city : this.city,
+      street : this.street,
+      zip : this.zip
     });
   };
 
@@ -100,21 +105,29 @@ export class PoliceComponent implements OnInit {
   }
 
   addParticipant(form: any): Promise<any> {
+    this.Paddress = {
+      $class : "org.holub.dschool.Address",
+      "city" : this.city.value,
+      "street": this.street.value,
+      "zip": this.zip.value
+    }
     this.participant = {
+
       $class: 'org.holub.dschool.Police',
       'email': this.email.value,
       'name': this.name.value,
       'surname': this.surname.value,
-      'addres': this.addres.value,
-      'chipNumber': this.chipNumber.value
+      'address': this.Paddress
     };
 
     this.myForm.setValue({
       'email': null,
       'name': null,
       'surname': null,
-      'addres': null,
-      'chipNumber': null
+      'address': null,
+      "city" : this.city.value,
+      "street": this.street.value,
+      "zip": this.zip.value
     });
 
     return this.servicePolice.addParticipant(this.participant)
@@ -125,8 +138,10 @@ export class PoliceComponent implements OnInit {
         'email': null,
         'name': null,
         'surname': null,
-        'addres': null,
-        'chipNumber': null
+        'address': null,
+        "city" : null,
+        "street": null,
+        "zip": null
       });
       this.loadAll(); 
     })
@@ -141,12 +156,17 @@ export class PoliceComponent implements OnInit {
 
 
    updateParticipant(form: any): Promise<any> {
+    this.Paddress = {
+      $class : "org.holub.dschool.Address",
+      "city" : this.city.value,
+      "street": this.street.value,
+      "zip": this.zip.value
+    }
     this.participant = {
       $class: 'org.holub.dschool.Police',
       'name': this.name.value,
       'surname': this.surname.value,
-      'addres': this.addres.value,
-      'chipNumber': this.chipNumber.value
+      'address': this.Paddress
     };
 
     return this.servicePolice.updateParticipant(form.get('email').value, this.participant)
@@ -200,8 +220,10 @@ export class PoliceComponent implements OnInit {
         'email': null,
         'name': null,
         'surname': null,
-        'addres': null,
-        'chipNumber': null
+        'address': null,
+        'street':null,
+        'zip':null,
+        'city':null
       };
 
       if (result.email) {
@@ -222,16 +244,10 @@ export class PoliceComponent implements OnInit {
         formObject.surname = null;
       }
 
-      if (result.addres) {
-        formObject.addres = result.addres;
+      if (result.address) {
+        formObject.address = result.address;
       } else {
-        formObject.addres = null;
-      }
-
-      if (result.chipNumber) {
-        formObject.chipNumber = result.chipNumber;
-      } else {
-        formObject.chipNumber = null;
+        formObject.address = null;
       }
 
       this.myForm.setValue(formObject);
@@ -253,8 +269,10 @@ export class PoliceComponent implements OnInit {
       'email': null,
       'name': null,
       'surname': null,
-      'addres': null,
-      'chipNumber': null
+      'address': null,
+      'street':null,
+      'zip':null,
+      'city':null
     });
   }
 }

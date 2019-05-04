@@ -16,8 +16,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="addTransactionModalLabel">Create Transaction</h4>
-        <p class="modal-intro">Enter the required values below.</p>
+        <h4 class="modal-title" id="addTransactionModalLabel">Zaznamenaj dochádzku</h4>
+        <p class="modal-intro">Na vykonanie akcie je potrebné vyplniť nasledovné údaje.</p>
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
@@ -27,7 +27,7 @@
 
             
               <div class="form-group text-left">
-                <label for="student">student</label>
+                <label for="student">študent</label>
                 
                     <textarea formControlName="student" class="form-control" rows="3"></textarea>
                 
@@ -37,7 +37,7 @@
 
             
               <div class="form-group text-left">
-                <label for="theory">theory</label>
+                <label for="theory">Kurz teórie</label>
                 
                     <textarea formControlName="theory" class="form-control" rows="3"></textarea>
                 
@@ -47,7 +47,7 @@
 
             
               <div class="form-group text-left">
-                <label for="arrival">arrival</label>
+                <label for="arrival">Príchod</label>
                 
                   <input formControlName="arrival" type="text" class="form-control">
                 
@@ -57,7 +57,7 @@
 
             
               <div class="form-group text-left">
-                <label for="departure">departure</label>
+                <label for="departure">Odchod</label>
                 
                   <input formControlName="departure" type="text" class="form-control">
                 
@@ -88,7 +88,7 @@
 
   <div class="row">
     <div class="col-md-12">
-        <h1 class="transaction-title" id='transactionName'>Attendance</h1>
+        <h1 class="transaction-title" id='transactionName'>Dochádzka</h1>
     </div>
   </div>
   <br>
@@ -96,24 +96,24 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
-          When invoked, this transaction will have the following attributes:
+          Aby sa transakcia vykonala je potrebné vyplniť nasledovné údaje:
           <br>
           <ul>
             
               
-                <li><span class="attribute"><b>student</b></span></li>
+                <li><span class="attribute"><b>študent</b></span></li>
               
             
               
-                <li><span class="attribute"><b>theory</b></span></li>
+                <li><span class="attribute"><b>Hodina teórie</b></span></li>
               
             
               
-                <li><span class="attribute"><b>arrival</b></span></li>
+                <li><span class="attribute"><b>Príchod</b></span></li>
               
             
               
-                <li><span class="attribute"><b>departure</b></span></li>
+                <li><span class="attribute"><b>Odchod</b></span></li>
               
             
               
@@ -123,7 +123,7 @@
           </ul>
         </div>
       </div>
-      <button (click)="resetForm();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTransactionModal">Invoke</button>
+      <button (click)="resetForm();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTransactionModal">Vykonaj</button>
     </div>
   </div>
 </div>

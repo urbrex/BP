@@ -16,8 +16,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="addAssetModalLabel">Create asset</h4>
-          <p class="modal-intro">Enter the required values below.</p>
+        <h4 class="modal-title" id="addAssetModalLabel">Vytvor hodinu teórie</h4>
+          <p class="modal-intro">Vyplň údaje nachádzajúce sa nižšie.</p>
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
@@ -27,7 +27,7 @@
 
             
               <div class="form-group text-left">
-                <label for="course">course</label>
+                <label for="course">Kurz</label>
                 
                     <textarea formControlName="course" class="form-control" rows="3"></textarea>
                 
@@ -37,7 +37,7 @@
 
             
               <div class="form-group text-left">
-                <label for="TheoryKey">TheoryKey</label>
+                <label for="TheoryKey">ID Hodiny</label>
                 
                   <input formControlName="TheoryKey" type="text" class="form-control">
                 
@@ -47,7 +47,7 @@
 
             
               <div class="form-group text-left">
-                <label for="attendance">attendance</label>
+                <label for="attendance">Dochádzka</label>
                 
                     <textarea formControlName="attendance" class="form-control" rows="3"></textarea>
                 
@@ -57,7 +57,7 @@
 
             
               <div class="form-group text-left">
-                <label for="date">date</label>
+                <label for="date">Dátum konania</label>
                 
                   <input formControlName="date" type="text" class="form-control">
                 
@@ -67,7 +67,7 @@
 
             
               <div class="form-group text-left">
-                <label for="started">started</label>
+                <label for="started">Hodina  začala</label>
                 
                   <input formControlName="started" type="text" class="form-control">
                 
@@ -77,7 +77,7 @@
 
             
               <div class="form-group text-left">
-                <label for="duration">duration</label>
+                <label for="duration">Trvanie hodiny</label>
                 
                   <input formControlName="duration" type="number" step='any' class="form-control">
                 
@@ -87,7 +87,7 @@
 
             
               <div class="form-group text-left">
-                <label for="locationAddresd">locationAddresd</label>
+                <label for="locationAddresd">Adresa konania</label>
                 
                     <textarea formControlName="locationAddresd" class="form-control" rows="3"></textarea>
                 
@@ -97,7 +97,7 @@
 
             
               <div class="form-group text-left">
-                <label for="locationInfo">locationInfo</label>
+                <label for="locationInfo">Upresnenie informácií ku adrese</label>
                 
                   <input formControlName="locationInfo" type="text" class="form-control">
                 
@@ -107,7 +107,7 @@
 
             
               <div class="form-group text-left">
-                <label for="mandatory">mandatory</label>
+                <label for="mandatory">Je povinná</label>
                 
                   <input formControlName="mandatory" type="checkbox" class="form-control">
                 
@@ -134,7 +134,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="updateAssetModalLabel">Update Asset</h4>
+        <h4 class="modal-title" id="updateAssetModalLabel">Uprav Hodinu teórie</h4>
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
@@ -142,7 +142,7 @@
 
           
             <div class="form-group text-left">
-              <label for="course">course</label>
+              <label for="course">Kurz</label>
               
               
                 
@@ -153,7 +153,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="TheoryKey">TheoryKey</label>
+              <label for="TheoryKey">ID Hodiny</label>
               
               
                 <input [ngModel]="TheoryKey" formControlName="TheoryKey" class="form-control" disabled="disabled">  
@@ -162,7 +162,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="attendance">attendance</label>
+              <label for="attendance">Dochádzka</label>
               
               
                 
@@ -173,7 +173,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="date">date</label>
+              <label for="date">Dátum konania</label>
               
               
                 <input [ngModel]="date"formControlName="date" type="text" class="form-control">
@@ -182,7 +182,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="started">started</label>
+              <label for="started">Začiatok</label>
               
               
                 <input [ngModel]="started"formControlName="started" type="text" class="form-control">
@@ -191,7 +191,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="duration">duration</label>
+              <label for="duration">Trvanie</label>
               
               
                 <input [ngModel]="duration" formControlName="duration" type="number" step='any' class="form-control">
@@ -200,9 +200,9 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="locationAddresd">locationAddresd</label>
+              <label for="locationAddresd">Adesa konania</label>
               
-              
+            
                 
                   <textarea [ngModel]="locationAddresd" formControlName="locationAddresd" class="form-control" rows="3"></textarea>
                 
@@ -211,7 +211,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="locationInfo">locationInfo</label>
+              <label for="locationInfo">Upresnenie informácií ku adrese</label>
               
               
                 <input [ngModel]="locationInfo"formControlName="locationInfo" type="text" class="form-control">
@@ -220,7 +220,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="mandatory">mandatory</label>
+              <label for="mandatory">Je povinná</label>
               
               
                 <input [ngModel]="mandatory" formControlName="mandatory" type="checkbox" class="form-control">
@@ -247,15 +247,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="deleteAssetModalLabel">Delete Asset</h4>
+        <h4 class="modal-title" id="deleteAssetModalLabel">Vymazať hodinu</h4>
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
-          Are you sure you want to delete this asset?
+         Si si istý že chceš výmazať hodinu?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Nie</button>
+          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Áno</button>
         </div>
       </form>
     </div>
@@ -288,7 +288,7 @@
                 <path fill-rule="evenodd" d="M5.5,4.5 L9.5,4.5 L10,4.5 L10,5.5 L9.5,5.5 L5.5,5.5 L5.5,9.5 L5.5,10 L4.5,10 L4.5,9.5 L4.5,5.5 L0.5,5.5 L0,5.5 L0,4.5 L0.5,4.5 L4.5,4.5 L4.5,0.5 L4.5,0 L5.5,0 L5.5,0.5 L5.5,4.5 Z"/>
               </svg>
           </span>
-        Create Asset
+        Vytvor Hodinu
       </button>
     </div>
   </div>
@@ -299,25 +299,25 @@
         <thead class="thead">
           <tr class="thead-cols">
             
-                <th class="info">course</th>
+                <th class="info">Kurz</th>
             
-                <th class="info">TheoryKey</th>
+                <th class="info">ID hodiny</th>
             
-                <th class="info">attendance</th>
+                <th class="info">Dochádzka</th>
             
-                <th class="info">date</th>
+                <th class="info">Dátum konania</th>
             
-                <th class="info">started</th>
+                <th class="info">Začiatok</th>
             
-                <th class="info">duration</th>
+                <th class="info">Trvanie</th>
             
-                <th class="info">locationAddresd</th>
+                <th class="info">Adresa konania</th>
             
-                <th class="info">locationInfo</th>
+                <th class="info">Upresňujúce info</th>
             
-                <th class="info">mandatory</th>
+                <th class="info">Je povinna</th>
             
-              <th class="info-actions">Actions</th>
+              <th class="info-actions">Akcie</th>
           </tr>
         </thead>
         <tbody>

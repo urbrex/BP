@@ -21,41 +21,51 @@ import { DataService } from './data.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+import { DSCourseComponent } from './DSCourse/DSCourse.component';
+import { CourseCreateComponent } from './CourseCreate/CourseCreate.component';
 import { CourseComponent } from './Course/Course.component';
 import { StudentCourseComponent } from './StudentCourse/StudentCourse.component';
 import { TheoryLessonComponent } from './TheoryLesson/TheoryLesson.component';
-import { SampleAssetComponent } from './SampleAsset/SampleAsset.component';
+import { DriveLessonComponent } from './DriveLesson/DriveLesson.component';
 
 import { StudentComponent } from './Student/Student.component';
 import { InstructorComponent } from './Instructor/Instructor.component';
 import { PoliceComponent } from './Police/Police.component';
-import { SampleParticipantComponent } from './SampleParticipant/SampleParticipant.component';
 
+import { DSCourseEvaluationComponent } from './DSCourseEvaluation/DSCourseEvaluation.component';
+import { DSAttendanceComponent } from './DSAttendance/DSAttendance.component';
 import { CourseEvaluationComponent } from './CourseEvaluation/CourseEvaluation.component';
-import { DriveLessonComponent } from './DriveLesson/DriveLesson.component';
 import { AttendanceComponent } from './Attendance/Attendance.component';
-import { CreateCourseComponent } from './CreateCourse/CreateCourse.component';
-import { CreateStudentCourseComponent } from './CreateStudentCourse/CreateStudentCourse.component';
-import { SampleTransactionComponent } from './SampleTransaction/SampleTransaction.component';
+import { SetupDrivingSchoolComponent } from './SetupDrivingSchool/SetupDrivingSchool.component';
+import { SetupAndTestComponent } from './SetupAndTest/SetupAndTest.component';
+import { DSSetupAndTestComponent } from './DSSetupAndTest/DSSetupAndTest.component';
+import { DumpTheEvidenceComponent } from './DumpTheEvidence/DumpTheEvidence.component';
+import { DumpTheEvidenceOfSecondModelComponent } from './DumpTheEvidenceOfSecondModel/DumpTheEvidenceOfSecondModel.component';
+import { TestQuerySpeedInModelsComponent } from './TestQuerySpeedInModels/TestQuerySpeedInModels.component';
 
   @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    DSCourseComponent,
+    CourseCreateComponent,
     CourseComponent,
     StudentCourseComponent,
     TheoryLessonComponent,
-    SampleAssetComponent,
+    DriveLessonComponent,
     StudentComponent,
     InstructorComponent,
     PoliceComponent,
-    SampleParticipantComponent,
+    DSCourseEvaluationComponent,
+    DSAttendanceComponent,
     CourseEvaluationComponent,
-    DriveLessonComponent,
     AttendanceComponent,
-    CreateCourseComponent,
-    CreateStudentCourseComponent,
-    SampleTransactionComponent
+    SetupDrivingSchoolComponent,
+    SetupAndTestComponent,
+    DSSetupAndTestComponent,
+    DumpTheEvidenceComponent,
+    DumpTheEvidenceOfSecondModelComponent,
+    TestQuerySpeedInModelsComponent
   ],
   imports: [
     BrowserModule,

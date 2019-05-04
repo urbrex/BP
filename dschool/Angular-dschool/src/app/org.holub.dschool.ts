@@ -7,8 +7,7 @@ import {Event} from './org.hyperledger.composer.system';
       email: string;
       name: string;
       surname: string;
-      addres: Address;
-      chipNumber: string;
+      address: Address;
    }
    export class Address {
       city: string;
@@ -16,8 +15,9 @@ import {Event} from './org.hyperledger.composer.system';
       zip: string;
    }
    export class Gps {
-      date: Date;
-      coordinates: string;
+      hei: string;
+      lat: string;
+      lon: string;
    }
    export class Student extends Person {
       dateOfBirth: Date;
@@ -46,24 +46,62 @@ import {Event} from './org.hyperledger.composer.system';
       E,
       T,
    }
+   export class DSCourse extends Asset {
+      Coursekey: string;
+      status: CourseStatus;
+      started: Date;
+      type: CourseType;
+      instructor: Instructor;
+      studentCourses: DSStudentCourse[];
+      theoryLessons: DSTheoryLesson[];
+   }
+   export class DSStudentCourse {
+      student: Student;
+      evaluations: DSCourseEvaluation[];
+      driveLessons: DSDriveLesson[];
+      paid: number;
+      feeStamp: boolean;
+   }
+   export class DSTheoryLesson {
+      date: Date;
+      started: Date;
+      duration: number;
+      locationAddresd: Address;
+      locationInfo: string;
+      mandatory: boolean;
+      attendance: DSAttendance[];
+   }
+   export class DSDriveLesson {
+      instructor: Instructor;
+      date: Date;
+      gpsInfo: Gps[];
+   }
+   export class DSCourseEvaluation extends Transaction {
+      dateOfTest: Date;
+      testResult: string;
+      parkingResult: string;
+      driveResult: string;
+      detail: string;
+      testAdministrator: Police;
+   }
+   export class DSAttendance extends Transaction {
+      student: Student;
+      arrival: Date;
+      departure: Date;
+   }
    export class Course extends Asset {
       Coursekey: string;
       status: CourseStatus;
       started: Date;
       finished: Date;
       type: CourseType;
-      numberOfStudents: number;
-      studentsFinishedCourse: number;
       instructor: Instructor;
-      theory: TheoryLesson[];
    }
    export class StudentCourse extends Asset {
       CourseKey: string;
       course: Course;
       student: Student;
       evaluations: CourseEvaluation[];
-      driveLesson: DriveLesson[];
-      failedAtempts: number;
       paid: number;
       feeStamp: boolean;
    }
@@ -78,6 +116,13 @@ import {Event} from './org.hyperledger.composer.system';
       locationInfo: string;
       mandatory: boolean;
    }
+   export class DriveLesson extends Asset {
+      id: string;
+      instructor: Instructor;
+      studentCourse: StudentCourse;
+      date: Date;
+      gpsInfo: Gps[];
+   }
    export class CourseEvaluation extends Transaction {
       dateOfTest: Date;
       testResult: string;
@@ -87,38 +132,24 @@ import {Event} from './org.hyperledger.composer.system';
       studentCourse: StudentCourse;
       testAdministrator: Police;
    }
-   export class DriveLesson extends Transaction {
-      instructor: Instructor;
-      studentCourse: StudentCourse;
-      date: Date;
-      gpsInfo: Gps[];
-   }
    export class Attendance extends Transaction {
       student: Student;
       theory: TheoryLesson;
       arrival: Date;
       departure: Date;
    }
-   export class CreateCourse extends Transaction {
+   export class SetupDrivingSchool extends Transaction {
    }
-   export class CreateStudentCourse extends Transaction {
+   export class SetupAndTest extends Transaction {
    }
-   export class SampleAsset extends Asset {
-      assetId: string;
-      value: string;
+   export class DSSetupAndTest extends Transaction {
    }
-   export class SampleEvent extends Event {
-      asset: SampleAsset;
-      oldValue: string;
-      newValue: string;
+   export class DumpTheEvidence extends Transaction {
    }
-   export class SampleParticipant extends Participant {
-      participantId: string;
-      firstName: string;
-      lastName: string;
+   export class DumpTheEvidenceOfSecondModel extends Transaction {
    }
-   export class SampleTransaction extends Transaction {
-      asset: SampleAsset;
-      newValue: string;
+   export class TestQuerySpeedInModels extends Transaction {
+      id: string;
+      scenario: string;
    }
 // }

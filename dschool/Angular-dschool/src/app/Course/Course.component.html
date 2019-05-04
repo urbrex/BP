@@ -16,8 +16,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="addAssetModalLabel">Create asset</h4>
-          <p class="modal-intro">Enter the required values below.</p>
+        <h4 class="modal-title" id="addAssetModalLabel">Vytvor nový kurz</h4>
+          <p class="modal-intro">Vyplň údaje nachádzajúce sa nižšie.</p>
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
@@ -27,7 +27,7 @@
 
             
               <div class="form-group text-left">
-                <label for="Coursekey">Coursekey</label>
+                <label for="Coursekey">ID Kurzu</label>
                 
                   <input formControlName="Coursekey" type="text" class="form-control">
                 
@@ -36,7 +36,7 @@
           
 
             
-              <label for="status">status</label>
+              <label for="status">Stav</label>
               <div class="checkbox">
                 
                   <label>
@@ -49,7 +49,7 @@
                       type="radio"
                       
                     />
-                    CREATED
+                    VYTVORENY
                   </label>
                 
                   <label>
@@ -62,7 +62,7 @@
                       type="radio"
                       
                     />
-                    ACTIVE
+                    ZACATY
                   </label>
                 
                   <label>
@@ -75,7 +75,7 @@
                       type="radio"
                       
                     />
-                    FINISHED
+                    UKONCENY
                   </label>
                 
               </div>
@@ -84,7 +84,7 @@
 
             
               <div class="form-group text-left">
-                <label for="started">started</label>
+                <label for="started">Začiatok Kurzu</label>
                 
                   <input formControlName="started" type="text" class="form-control">
                 
@@ -94,7 +94,7 @@
 
             
               <div class="form-group text-left">
-                <label for="finished">finished</label>
+                <label for="finished">Koniec Kurzu</label>
                 
                   <input formControlName="finished" type="text" class="form-control">
                 
@@ -103,7 +103,7 @@
           
 
             
-              <label for="type">type</label>
+              <label for="type">Kurz pre vozidla typu</label>
               <div class="checkbox">
                 
                   <label>
@@ -216,27 +216,7 @@
 
             
               <div class="form-group text-left">
-                <label for="numberOfStudents">numberOfStudents</label>
-                
-                  <input formControlName="numberOfStudents" type="number" step='any' class="form-control">
-                
-              </div>
-            
-          
-
-            
-              <div class="form-group text-left">
-                <label for="studentsFinishedCourse">studentsFinishedCourse</label>
-                
-                  <input formControlName="studentsFinishedCourse" type="number" step='any' class="form-control">
-                
-              </div>
-            
-          
-
-            
-              <div class="form-group text-left">
-                <label for="instructor">instructor</label>
+                <label for="instructor">Inštruktor</label>
                 
                     <textarea formControlName="instructor" class="form-control" rows="3"></textarea>
                 
@@ -244,20 +224,10 @@
             
           
 
-            
-              <div class="form-group text-left">
-                <label for="theory">theory</label>
-                
-                    <textarea formControlName="theory" class="form-control" rows="3"></textarea>
-                
-              </div>
-            
-          
-
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button (click)="addAsset(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Confirm</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Zrušiť</button>
+          <button (click)="addAsset(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Potvrdiť</button>
 
         </div>
       </form>
@@ -273,7 +243,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="updateAssetModalLabel">Update Asset</h4>
+        <h4 class="modal-title" id="updateAssetModalLabel">Upraviť kurz</h4>
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
@@ -281,7 +251,7 @@
 
           
             <div class="form-group text-left">
-              <label for="Coursekey">Coursekey</label>
+              <label for="Coursekey">ID kurzu</label>
               
               
                 <input [ngModel]="Coursekey" formControlName="Coursekey" class="form-control" disabled="disabled">  
@@ -290,7 +260,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="status">status</label>
+              <label for="status">Stav kurzu</label>
               
               
                 
@@ -308,7 +278,7 @@
                           type="radio"
                           
                         />
-                        CREATED
+                        VYTVORENY
                       </label>
                     
                       <label>
@@ -322,7 +292,7 @@
                           type="radio"
                           
                         />
-                        ACTIVE
+                        ZACATY
                       </label>
                     
                       <label>
@@ -336,7 +306,7 @@
                           type="radio"
                           
                         />
-                        FINISHED
+                        UKONCENY
                       </label>
                     
                     </div>
@@ -347,7 +317,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="started">started</label>
+              <label for="started">Začiatok kurzu</label>
               
               
                 <input [ngModel]="started"formControlName="started" type="text" class="form-control">
@@ -356,7 +326,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="finished">finished</label>
+              <label for="finished">Koniec kurzu</label>
               
               
                 <input [ngModel]="finished"formControlName="finished" type="text" class="form-control">
@@ -365,7 +335,7 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="type">type</label>
+              <label for="type">Kurz pre vozidla typu</label>
               
               
                 
@@ -492,40 +462,11 @@
             </div>
           
             <div class="form-group text-left">
-              <label for="numberOfStudents">numberOfStudents</label>
-              
-              
-                <input [ngModel]="numberOfStudents" formControlName="numberOfStudents" type="number" step='any' class="form-control">
-              
-
-            </div>
-          
-            <div class="form-group text-left">
-              <label for="studentsFinishedCourse">studentsFinishedCourse</label>
-              
-              
-                <input [ngModel]="studentsFinishedCourse" formControlName="studentsFinishedCourse" type="number" step='any' class="form-control">
-              
-
-            </div>
-          
-            <div class="form-group text-left">
-              <label for="instructor">instructor</label>
+              <label for="instructor">Inštruktor</label>
               
               
                 
                   <textarea [ngModel]="instructor" formControlName="instructor" class="form-control" rows="3"></textarea>
-                
-              
-
-            </div>
-          
-            <div class="form-group text-left">
-              <label for="theory">theory</label>
-              
-              
-                
-                  <textarea [ngModel]="theory" formControlName="theory" class="form-control" rows="3"></textarea>
                 
               
 
@@ -554,11 +495,11 @@
       </div>
       <form [formGroup]="myForm">
         <div class="modal-body">
-          Are you sure you want to delete this asset?
+          Určite chceš vymazať tento kurz?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Nie</button>
+          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Áno</button>
         </div>
       </form>
     </div>
@@ -582,7 +523,7 @@
   
   <div class="row">
     <div class="col-md-9">
-        <h1 class="asset-title" id='assetName'>Course</h1>
+        <h1 class="asset-title" id='assetName'>Kurz</h1>
     </div>
     <div class="col-md-3">
       <button (click)="resetForm()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAssetModal">
@@ -591,7 +532,7 @@
                 <path fill-rule="evenodd" d="M5.5,4.5 L9.5,4.5 L10,4.5 L10,5.5 L9.5,5.5 L5.5,5.5 L5.5,9.5 L5.5,10 L4.5,10 L4.5,9.5 L4.5,5.5 L0.5,5.5 L0,5.5 L0,4.5 L0.5,4.5 L4.5,4.5 L4.5,0.5 L4.5,0 L5.5,0 L5.5,0.5 L5.5,4.5 Z"/>
               </svg>
           </span>
-        Create Asset
+        Vytvor kurz
       </button>
     </div>
   </div>
@@ -602,25 +543,19 @@
         <thead class="thead">
           <tr class="thead-cols">
             
-                <th class="info">Coursekey</th>
+                <th class="info">ID kurzu</th>
             
-                <th class="info">status</th>
+                <th class="info">Inštruktor</th>
             
-                <th class="info">started</th>
+                <th class="info">Typ vozidiel pre kurz</th>
             
-                <th class="info">finished</th>
+                <th class="info">Stav</th>
             
-                <th class="info">type</th>
+                <th class="info">Začiatok</th>
             
-                <th class="info">numberOfStudents</th>
+                <th class="info">Koniec</th>
             
-                <th class="info">studentsFinishedCourse</th>
-            
-                <th class="info">instructor</th>
-            
-                <th class="info">theory</th>
-            
-              <th class="info-actions">Actions</th>
+              <th class="info-actions">Akcie</th>
           </tr>
         </thead>
         <tbody>
@@ -628,22 +563,16 @@
 
             
                 <td class="asset-properties">{{asset.Coursekey}}</td>
+
+                <td class="asset-properties">{{asset.instructor}}</td>
+                
+                <td class="asset-properties">{{asset.type}}</td>
             
                 <td class="asset-properties">{{asset.status}}</td>
             
                 <td class="asset-properties">{{asset.started}}</td>
             
                 <td class="asset-properties">{{asset.finished}}</td>
-            
-                <td class="asset-properties">{{asset.type}}</td>
-            
-                <td class="asset-properties">{{asset.numberOfStudents}}</td>
-            
-                <td class="asset-properties">{{asset.studentsFinishedCourse}}</td>
-            
-                <td class="asset-properties">{{asset.instructor}}</td>
-            
-                <td class="asset-properties">{{asset.theory}}</td>
             
             <td>
               <button (click)="getForm(asset.Coursekey);" type="button" class="btn btn-update" data-toggle="modal" data-target="#updateAssetModal">

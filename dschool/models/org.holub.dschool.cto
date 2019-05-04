@@ -32,14 +32,15 @@ concept Address {
 }
 
 concept Gps {
-  o DateTime date
-  o String coordinates
+  o String hei
+  o String lat
+  o String lon
 }
 
 participant Student extends Person {
   o DateTime dateOfBirth
   o Double phone
-  o String idCard 
+  o String idCard optional
 }
 
 participant Instructor extends Person {
@@ -68,6 +69,55 @@ enum CourseType {
   o T
 }
 
+asset DSCourse identified by Coursekey {
+  o String Coursekey
+  o CourseStatus status
+  o DateTime started optional
+  o CourseType type
+  --> Instructor instructor
+  o DSStudentCourse[] studentCourses optional
+  o DSTheoryLesson[] theoryLessons optional
+}
+
+concept DSStudentCourse {
+  --> Student student 
+  o DSCourseEvaluation[] evaluations optional
+  o DSDriveLesson[] driveLessons optional
+  o Double paid
+  o Boolean feeStamp
+}
+
+concept DSTheoryLesson {
+  o DateTime date
+  o DateTime started
+  o Double duration
+  o Address locationAddresd
+  o String locationInfo
+  o Boolean mandatory
+  o DSAttendance[] attendance optional
+}
+
+concept DSDriveLesson {
+  --> Instructor instructor
+  o DateTime date
+  o Gps[] gpsInfo optional
+}
+
+transaction DSCourseEvaluation {
+  o DateTime dateOfTest
+  o String testResult
+  o String parkingResult
+  o String driveResult
+  o String detail
+  --> Police testAdministrator
+}
+
+transaction DSAttendance {
+  --> Student student
+  o DateTime arrival
+  o DateTime departure optional
+}
+
 asset Course identified by Coursekey {
   o String Coursekey
   o CourseStatus status
@@ -91,10 +141,10 @@ asset TheoryLesson identified by TheoryKey {
   o String TheoryKey
   o Attendance[] attendance optional
   o DateTime date
-  o DateTime started
+  o DateTime started optional
   o Double duration
   o Address locationAddresd
-  o String locationInfo
+  o String locationInfo optional
   o Boolean mandatory
 }
 
@@ -124,4 +174,19 @@ transaction Attendance {
 }
 
 transaction SetupDrivingSchool {
+}
+
+transaction SetupAndTest {
+}
+transaction DSSetupAndTest {
+}
+
+transaction DumpTheEvidence{
+}
+transaction DumpTheEvidenceOfSecondModel{
+}
+
+transaction TestQuerySpeedInModels{
+  o String id
+  o String scenario
 }

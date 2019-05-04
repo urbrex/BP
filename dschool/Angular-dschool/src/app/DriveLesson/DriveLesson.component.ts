@@ -27,27 +27,24 @@ export class DriveLessonComponent implements OnInit {
 
   myForm: FormGroup;
 
-  private allTransactions;
-  private Transaction;
+  private allAssets;
+  private asset;
   private currentId;
   private errorMessage;
 
+  id = new FormControl('', Validators.required);
   instructor = new FormControl('', Validators.required);
   studentCourse = new FormControl('', Validators.required);
   date = new FormControl('', Validators.required);
   gpsInfo = new FormControl('', Validators.required);
-  transactionId = new FormControl('', Validators.required);
-  timestamp = new FormControl('', Validators.required);
 
-
-  constructor(private serviceDriveLesson: DriveLessonService, fb: FormBuilder) {
+  constructor(public serviceDriveLesson: DriveLessonService, fb: FormBuilder) {
     this.myForm = fb.group({
+      id: this.id,
       instructor: this.instructor,
       studentCourse: this.studentCourse,
       date: this.date,
-      gpsInfo: this.gpsInfo,
-      transactionId: this.transactionId,
-      timestamp: this.timestamp
+      gpsInfo: this.gpsInfo
     });
   };
 
@@ -61,10 +58,10 @@ export class DriveLessonComponent implements OnInit {
     .toPromise()
     .then((result) => {
       this.errorMessage = null;
-      result.forEach(transaction => {
-        tempList.push(transaction);
+      result.forEach(asset => {
+        tempList.push(asset);
       });
-      this.allTransactions = tempList;
+      this.allAssets = tempList;
     })
     .catch((error) => {
       if (error === 'Server error') {
@@ -79,7 +76,7 @@ export class DriveLessonComponent implements OnInit {
 
 	/**
    * Event handler for changing the checked state of a checkbox (handles array enumeration values)
-   * @param {String} name - the name of the transaction field to update
+   * @param {String} name - the name of the asset field to update
    * @param {any} value - the enumeration value for which to toggle the checked state
    */
   changeArrayValue(name: string, value: any): void {
@@ -93,89 +90,90 @@ export class DriveLessonComponent implements OnInit {
 
 	/**
 	 * Checkbox helper, determining whether an enumeration value should be selected or not (for array enumeration values
-   * only). This is used for checkboxes in the transaction updateDialog.
-   * @param {String} name - the name of the transaction field to check
+   * only). This is used for checkboxes in the asset updateDialog.
+   * @param {String} name - the name of the asset field to check
    * @param {any} value - the enumeration value to check for
-   * @return {Boolean} whether the specified transaction field contains the provided value
+   * @return {Boolean} whether the specified asset field contains the provided value
    */
   hasArrayValue(name: string, value: any): boolean {
     return this[name].value.indexOf(value) !== -1;
   }
 
-  addTransaction(form: any): Promise<any> {
-    this.Transaction = {
+  addAsset(form: any): Promise<any> {
+    this.asset = {
       $class: 'org.holub.dschool.DriveLesson',
+      'id': this.id.value,
       'instructor': this.instructor.value,
       'studentCourse': this.studentCourse.value,
       'date': this.date.value,
-      'gpsInfo': this.gpsInfo.value,
-      'transactionId': this.transactionId.value,
-      'timestamp': this.timestamp.value
+      'gpsInfo': this.gpsInfo.value
     };
 
     this.myForm.setValue({
+      'id': null,
       'instructor': null,
       'studentCourse': null,
       'date': null,
-      'gpsInfo': null,
-      'transactionId': null,
-      'timestamp': null
+      'gpsInfo': null
     });
 
-    return this.serviceDriveLesson.addTransaction(this.Transaction)
+    return this.serviceDriveLesson.addAsset(this.asset)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
       this.myForm.setValue({
+        'id': null,
         'instructor': null,
         'studentCourse': null,
         'date': null,
-        'gpsInfo': null,
-        'transactionId': null,
-        'timestamp': null
+        'gpsInfo': null
       });
+      this.loadAll();
     })
     .catch((error) => {
       if (error === 'Server error') {
-        this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
+          this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else {
-        this.errorMessage = error;
+          this.errorMessage = error;
       }
     });
   }
 
-  updateTransaction(form: any): Promise<any> {
-    this.Transaction = {
+
+  updateAsset(form: any): Promise<any> {
+    this.asset = {
       $class: 'org.holub.dschool.DriveLesson',
       'instructor': this.instructor.value,
       'studentCourse': this.studentCourse.value,
       'date': this.date.value,
-      'gpsInfo': this.gpsInfo.value,
-      'timestamp': this.timestamp.value
+      'gpsInfo': this.gpsInfo.value
     };
 
-    return this.serviceDriveLesson.updateTransaction(form.get('transactionId').value, this.Transaction)
+    return this.serviceDriveLesson.updateAsset(form.get('id').value, this.asset)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
+      this.loadAll();
     })
     .catch((error) => {
       if (error === 'Server error') {
         this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else if (error === '404 - Not Found') {
-      this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
+        this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
       } else {
         this.errorMessage = error;
       }
     });
   }
 
-  deleteTransaction(): Promise<any> {
 
-    return this.serviceDriveLesson.deleteTransaction(this.currentId)
+  deleteAsset(): Promise<any> {
+
+    return this.serviceDriveLesson.deleteAsset(this.currentId)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
+      this.loadAll();
     })
     .catch((error) => {
       if (error === 'Server error') {
@@ -194,18 +192,23 @@ export class DriveLessonComponent implements OnInit {
 
   getForm(id: any): Promise<any> {
 
-    return this.serviceDriveLesson.getTransaction(id)
+    return this.serviceDriveLesson.getAsset(id)
     .toPromise()
     .then((result) => {
       this.errorMessage = null;
       const formObject = {
+        'id': null,
         'instructor': null,
         'studentCourse': null,
         'date': null,
-        'gpsInfo': null,
-        'transactionId': null,
-        'timestamp': null
+        'gpsInfo': null
       };
+
+      if (result.id) {
+        formObject.id = result.id;
+      } else {
+        formObject.id = null;
+      }
 
       if (result.instructor) {
         formObject.instructor = result.instructor;
@@ -231,18 +234,6 @@ export class DriveLessonComponent implements OnInit {
         formObject.gpsInfo = null;
       }
 
-      if (result.transactionId) {
-        formObject.transactionId = result.transactionId;
-      } else {
-        formObject.transactionId = null;
-      }
-
-      if (result.timestamp) {
-        formObject.timestamp = result.timestamp;
-      } else {
-        formObject.timestamp = null;
-      }
-
       this.myForm.setValue(formObject);
 
     })
@@ -250,7 +241,7 @@ export class DriveLessonComponent implements OnInit {
       if (error === 'Server error') {
         this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
       } else if (error === '404 - Not Found') {
-      this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
+        this.errorMessage = '404 - Could not find API route. Please check your available APIs.';
       } else {
         this.errorMessage = error;
       }
@@ -259,12 +250,12 @@ export class DriveLessonComponent implements OnInit {
 
   resetForm(): void {
     this.myForm.setValue({
+      'id': null,
       'instructor': null,
       'studentCourse': null,
       'date': null,
-      'gpsInfo': null,
-      'transactionId': null,
-      'timestamp': null
-    });
+      'gpsInfo': null
+      });
   }
+
 }

@@ -31,13 +31,13 @@ describe('Starting tests for Angular-dschool', function() {
     })
   });
 
-  it('network-name should be dschool@0.0.1',() => {
+  it('network-name should be dschool@0.1.2',() => {
     element(by.css('.network-name')).getWebElement()
     .then((webElement) => {
       return webElement.getText();
     })
     .then((txt) => {
-      expect(txt).toBe('dschool@0.0.1.bna');
+      expect(txt).toBe('dschool@0.1.2.bna');
     });
   });
 
@@ -52,6 +52,24 @@ describe('Starting tests for Angular-dschool', function() {
   });
 
   
+    it('DSCourse component should be loadable',() => {
+      page.navigateTo('/DSCourse');
+      browser.findElement(by.id('assetName'))
+      .then((assetName) => {
+        return assetName.getText();
+      })
+      .then((txt) => {
+        expect(txt).toBe('DSCourse');
+      });
+    });
+
+    it('DSCourse table should have 8 columns',() => {
+      page.navigateTo('/DSCourse');
+      element.all(by.css('.thead-cols th')).then(function(arr) {
+        expect(arr.length).toEqual(8); // Addition of 1 for 'Action' column
+      });
+    });
+  
     it('Course component should be loadable',() => {
       page.navigateTo('/Course');
       browser.findElement(by.id('assetName'))
@@ -63,10 +81,10 @@ describe('Starting tests for Angular-dschool', function() {
       });
     });
 
-    it('Course table should have 10 columns',() => {
+    it('Course table should have 7 columns',() => {
       page.navigateTo('/Course');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(10); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(7); // Addition of 1 for 'Action' column
       });
     });
   
@@ -81,10 +99,10 @@ describe('Starting tests for Angular-dschool', function() {
       });
     });
 
-    it('StudentCourse table should have 9 columns',() => {
+    it('StudentCourse table should have 7 columns',() => {
       page.navigateTo('/StudentCourse');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(9); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(7); // Addition of 1 for 'Action' column
       });
     });
   
@@ -106,21 +124,21 @@ describe('Starting tests for Angular-dschool', function() {
       });
     });
   
-    it('SampleAsset component should be loadable',() => {
-      page.navigateTo('/SampleAsset');
+    it('DriveLesson component should be loadable',() => {
+      page.navigateTo('/DriveLesson');
       browser.findElement(by.id('assetName'))
       .then((assetName) => {
         return assetName.getText();
       })
       .then((txt) => {
-        expect(txt).toBe('SampleAsset');
+        expect(txt).toBe('DriveLesson');
       });
     });
 
-    it('SampleAsset table should have 3 columns',() => {
-      page.navigateTo('/SampleAsset');
+    it('DriveLesson table should have 6 columns',() => {
+      page.navigateTo('/DriveLesson');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(3); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(6); // Addition of 1 for 'Action' column
       });
     });
   
@@ -137,10 +155,10 @@ describe('Starting tests for Angular-dschool', function() {
       });
     });
 
-    it('Student table should have 9 columns',() => {
+    it('Student table should have 8 columns',() => {
       page.navigateTo('/Student');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(9); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(8); // Addition of 1 for 'Action' column
       });
     });
   
@@ -155,10 +173,10 @@ describe('Starting tests for Angular-dschool', function() {
       });
     });
 
-    it('Instructor table should have 9 columns',() => {
+    it('Instructor table should have 8 columns',() => {
       page.navigateTo('/Instructor');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(9); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(8); // Addition of 1 for 'Action' column
       });
     });
   
@@ -173,32 +191,36 @@ describe('Starting tests for Angular-dschool', function() {
       });
     });
 
-    it('Police table should have 6 columns',() => {
+    it('Police table should have 5 columns',() => {
       page.navigateTo('/Police');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(6); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(5); // Addition of 1 for 'Action' column
       });
     });
   
-    it('SampleParticipant component should be loadable',() => {
-      page.navigateTo('/SampleParticipant');
-      browser.findElement(by.id('participantName'))
-      .then((participantName) => {
-        return participantName.getText();
+
+  
+    it('DSCourseEvaluation component should be loadable',() => {
+      page.navigateTo('/DSCourseEvaluation');
+      browser.findElement(by.id('transactionName'))
+      .then((transactionName) => {
+        return transactionName.getText();
       })
       .then((txt) => {
-        expect(txt).toBe('SampleParticipant');
-      });
-    });
-
-    it('SampleParticipant table should have 4 columns',() => {
-      page.navigateTo('/SampleParticipant');
-      element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(4); // Addition of 1 for 'Action' column
+        expect(txt).toBe('DSCourseEvaluation');
       });
     });
   
-
+    it('DSAttendance component should be loadable',() => {
+      page.navigateTo('/DSAttendance');
+      browser.findElement(by.id('transactionName'))
+      .then((transactionName) => {
+        return transactionName.getText();
+      })
+      .then((txt) => {
+        expect(txt).toBe('DSAttendance');
+      });
+    });
   
     it('CourseEvaluation component should be loadable',() => {
       page.navigateTo('/CourseEvaluation');
@@ -208,17 +230,6 @@ describe('Starting tests for Angular-dschool', function() {
       })
       .then((txt) => {
         expect(txt).toBe('CourseEvaluation');
-      });
-    });
-  
-    it('DriveLesson component should be loadable',() => {
-      page.navigateTo('/DriveLesson');
-      browser.findElement(by.id('transactionName'))
-      .then((transactionName) => {
-        return transactionName.getText();
-      })
-      .then((txt) => {
-        expect(txt).toBe('DriveLesson');
       });
     });
   
@@ -233,36 +244,69 @@ describe('Starting tests for Angular-dschool', function() {
       });
     });
   
-    it('CreateCourse component should be loadable',() => {
-      page.navigateTo('/CreateCourse');
+    it('SetupDrivingSchool component should be loadable',() => {
+      page.navigateTo('/SetupDrivingSchool');
       browser.findElement(by.id('transactionName'))
       .then((transactionName) => {
         return transactionName.getText();
       })
       .then((txt) => {
-        expect(txt).toBe('CreateCourse');
+        expect(txt).toBe('SetupDrivingSchool');
       });
     });
   
-    it('CreateStudentCourse component should be loadable',() => {
-      page.navigateTo('/CreateStudentCourse');
+    it('SetupAndTest component should be loadable',() => {
+      page.navigateTo('/SetupAndTest');
       browser.findElement(by.id('transactionName'))
       .then((transactionName) => {
         return transactionName.getText();
       })
       .then((txt) => {
-        expect(txt).toBe('CreateStudentCourse');
+        expect(txt).toBe('SetupAndTest');
       });
     });
   
-    it('SampleTransaction component should be loadable',() => {
-      page.navigateTo('/SampleTransaction');
+    it('DSSetupAndTest component should be loadable',() => {
+      page.navigateTo('/DSSetupAndTest');
       browser.findElement(by.id('transactionName'))
       .then((transactionName) => {
         return transactionName.getText();
       })
       .then((txt) => {
-        expect(txt).toBe('SampleTransaction');
+        expect(txt).toBe('DSSetupAndTest');
+      });
+    });
+  
+    it('DumpTheEvidence component should be loadable',() => {
+      page.navigateTo('/DumpTheEvidence');
+      browser.findElement(by.id('transactionName'))
+      .then((transactionName) => {
+        return transactionName.getText();
+      })
+      .then((txt) => {
+        expect(txt).toBe('DumpTheEvidence');
+      });
+    });
+  
+    it('DumpTheEvidenceOfSecondModel component should be loadable',() => {
+      page.navigateTo('/DumpTheEvidenceOfSecondModel');
+      browser.findElement(by.id('transactionName'))
+      .then((transactionName) => {
+        return transactionName.getText();
+      })
+      .then((txt) => {
+        expect(txt).toBe('DumpTheEvidenceOfSecondModel');
+      });
+    });
+  
+    it('TestQuerySpeedInModels component should be loadable',() => {
+      page.navigateTo('/TestQuerySpeedInModels');
+      browser.findElement(by.id('transactionName'))
+      .then((transactionName) => {
+        return transactionName.getText();
+      })
+      .then((txt) => {
+        expect(txt).toBe('TestQuerySpeedInModels');
       });
     });
   

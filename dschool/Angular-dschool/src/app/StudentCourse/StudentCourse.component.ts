@@ -36,8 +36,6 @@ export class StudentCourseComponent implements OnInit {
   course = new FormControl('', Validators.required);
   student = new FormControl('', Validators.required);
   evaluations = new FormControl('', Validators.required);
-  driveLesson = new FormControl('', Validators.required);
-  failedAtempts = new FormControl('', Validators.required);
   paid = new FormControl('', Validators.required);
   feeStamp = new FormControl('', Validators.required);
 
@@ -47,8 +45,6 @@ export class StudentCourseComponent implements OnInit {
       course: this.course,
       student: this.student,
       evaluations: this.evaluations,
-      driveLesson: this.driveLesson,
-      failedAtempts: this.failedAtempts,
       paid: this.paid,
       feeStamp: this.feeStamp
     });
@@ -112,8 +108,6 @@ export class StudentCourseComponent implements OnInit {
       'course': this.course.value,
       'student': this.student.value,
       'evaluations': this.evaluations.value,
-      'driveLesson': this.driveLesson.value,
-      'failedAtempts': this.failedAtempts.value,
       'paid': this.paid.value,
       'feeStamp': this.feeStamp.value
     };
@@ -123,8 +117,6 @@ export class StudentCourseComponent implements OnInit {
       'course': null,
       'student': null,
       'evaluations': null,
-      'driveLesson': null,
-      'failedAtempts': null,
       'paid': null,
       'feeStamp': null
     });
@@ -138,8 +130,6 @@ export class StudentCourseComponent implements OnInit {
         'course': null,
         'student': null,
         'evaluations': null,
-        'driveLesson': null,
-        'failedAtempts': null,
         'paid': null,
         'feeStamp': null
       });
@@ -161,8 +151,6 @@ export class StudentCourseComponent implements OnInit {
       'course': this.course.value,
       'student': this.student.value,
       'evaluations': this.evaluations.value,
-      'driveLesson': this.driveLesson.value,
-      'failedAtempts': this.failedAtempts.value,
       'paid': this.paid.value,
       'feeStamp': this.feeStamp.value
     };
@@ -219,8 +207,6 @@ export class StudentCourseComponent implements OnInit {
         'course': null,
         'student': null,
         'evaluations': null,
-        'driveLesson': null,
-        'failedAtempts': null,
         'paid': null,
         'feeStamp': null
       };
@@ -247,18 +233,6 @@ export class StudentCourseComponent implements OnInit {
         formObject.evaluations = result.evaluations;
       } else {
         formObject.evaluations = null;
-      }
-
-      if (result.driveLesson) {
-        formObject.driveLesson = result.driveLesson;
-      } else {
-        formObject.driveLesson = null;
-      }
-
-      if (result.failedAtempts) {
-        formObject.failedAtempts = result.failedAtempts;
-      } else {
-        formObject.failedAtempts = null;
       }
 
       if (result.paid) {
@@ -293,8 +267,6 @@ export class StudentCourseComponent implements OnInit {
       'course': null,
       'student': null,
       'evaluations': null,
-      'driveLesson': null,
-      'failedAtempts': null,
       'paid': null,
       'feeStamp': null
       });

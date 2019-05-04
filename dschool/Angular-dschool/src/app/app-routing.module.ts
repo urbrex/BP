@@ -17,39 +17,49 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 
+import { DSCourseComponent } from './DSCourse/DSCourse.component';
 import { CourseComponent } from './Course/Course.component';
+import { CourseCreateComponent } from './CourseCreate/CourseCreate.component';
 import { StudentCourseComponent } from './StudentCourse/StudentCourse.component';
 import { TheoryLessonComponent } from './TheoryLesson/TheoryLesson.component';
-import { SampleAssetComponent } from './SampleAsset/SampleAsset.component';
+import { DriveLessonComponent } from './DriveLesson/DriveLesson.component';
 
 import { StudentComponent } from './Student/Student.component';
 import { InstructorComponent } from './Instructor/Instructor.component';
 import { PoliceComponent } from './Police/Police.component';
-import { SampleParticipantComponent } from './SampleParticipant/SampleParticipant.component';
 
+import { DSCourseEvaluationComponent } from './DSCourseEvaluation/DSCourseEvaluation.component';
+import { DSAttendanceComponent } from './DSAttendance/DSAttendance.component';
 import { CourseEvaluationComponent } from './CourseEvaluation/CourseEvaluation.component';
-import { DriveLessonComponent } from './DriveLesson/DriveLesson.component';
 import { AttendanceComponent } from './Attendance/Attendance.component';
-import { CreateCourseComponent } from './CreateCourse/CreateCourse.component';
-import { CreateStudentCourseComponent } from './CreateStudentCourse/CreateStudentCourse.component';
-import { SampleTransactionComponent } from './SampleTransaction/SampleTransaction.component';
+import { SetupDrivingSchoolComponent } from './SetupDrivingSchool/SetupDrivingSchool.component';
+import { SetupAndTestComponent } from './SetupAndTest/SetupAndTest.component';
+import { DSSetupAndTestComponent } from './DSSetupAndTest/DSSetupAndTest.component';
+import { DumpTheEvidenceComponent } from './DumpTheEvidence/DumpTheEvidence.component';
+import { DumpTheEvidenceOfSecondModelComponent } from './DumpTheEvidenceOfSecondModel/DumpTheEvidenceOfSecondModel.component';
+import { TestQuerySpeedInModelsComponent } from './TestQuerySpeedInModels/TestQuerySpeedInModels.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'DSCourse', component: DSCourseComponent },
   { path: 'Course', component: CourseComponent },
+  { path: 'CourseCreate', component: CourseCreateComponent },
   { path: 'StudentCourse', component: StudentCourseComponent },
   { path: 'TheoryLesson', component: TheoryLessonComponent },
-  { path: 'SampleAsset', component: SampleAssetComponent },
+  { path: 'DriveLesson', component: DriveLessonComponent },
   { path: 'Student', component: StudentComponent },
   { path: 'Instructor', component: InstructorComponent },
   { path: 'Police', component: PoliceComponent },
-  { path: 'SampleParticipant', component: SampleParticipantComponent },
+  { path: 'DSCourseEvaluation', component: DSCourseEvaluationComponent },
+  { path: 'DSAttendance', component: DSAttendanceComponent },
   { path: 'CourseEvaluation', component: CourseEvaluationComponent },
-  { path: 'DriveLesson', component: DriveLessonComponent },
   { path: 'Attendance', component: AttendanceComponent },
-  { path: 'CreateCourse', component: CreateCourseComponent },
-  { path: 'CreateStudentCourse', component: CreateStudentCourseComponent },
-  { path: 'SampleTransaction', component: SampleTransactionComponent },
+  { path: 'SetupDrivingSchool', component: SetupDrivingSchoolComponent },
+  { path: 'SetupAndTest', component: SetupAndTestComponent },
+  { path: 'DSSetupAndTest', component: DSSetupAndTestComponent },
+  { path: 'DumpTheEvidence', component: DumpTheEvidenceComponent },
+  { path: 'DumpTheEvidenceOfSecondModel', component: DumpTheEvidenceOfSecondModelComponent },
+  { path: 'TestQuerySpeedInModels', component: TestQuerySpeedInModelsComponent },
   { path: '**', redirectTo: '' }
 ];
 

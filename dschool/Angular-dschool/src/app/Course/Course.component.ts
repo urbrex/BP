@@ -37,10 +37,7 @@ export class CourseComponent implements OnInit {
   started = new FormControl('', Validators.required);
   finished = new FormControl('', Validators.required);
   type = new FormControl('', Validators.required);
-  numberOfStudents = new FormControl('', Validators.required);
-  studentsFinishedCourse = new FormControl('', Validators.required);
   instructor = new FormControl('', Validators.required);
-  theory = new FormControl('', Validators.required);
 
   constructor(public serviceCourse: CourseService, fb: FormBuilder) {
     this.myForm = fb.group({
@@ -49,10 +46,7 @@ export class CourseComponent implements OnInit {
       started: this.started,
       finished: this.finished,
       type: this.type,
-      numberOfStudents: this.numberOfStudents,
-      studentsFinishedCourse: this.studentsFinishedCourse,
-      instructor: this.instructor,
-      theory: this.theory
+      instructor: this.instructor
     });
   };
 
@@ -115,10 +109,7 @@ export class CourseComponent implements OnInit {
       'started': this.started.value,
       'finished': this.finished.value,
       'type': this.type.value,
-      'numberOfStudents': this.numberOfStudents.value,
-      'studentsFinishedCourse': this.studentsFinishedCourse.value,
-      'instructor': this.instructor.value,
-      'theory': this.theory.value
+      'instructor': this.instructor.value
     };
 
     this.myForm.setValue({
@@ -127,10 +118,7 @@ export class CourseComponent implements OnInit {
       'started': null,
       'finished': null,
       'type': null,
-      'numberOfStudents': null,
-      'studentsFinishedCourse': null,
-      'instructor': null,
-      'theory': null
+      'instructor': null
     });
 
     return this.serviceCourse.addAsset(this.asset)
@@ -143,10 +131,7 @@ export class CourseComponent implements OnInit {
         'started': null,
         'finished': null,
         'type': null,
-        'numberOfStudents': null,
-        'studentsFinishedCourse': null,
-        'instructor': null,
-        'theory': null
+        'instructor': null
       });
       this.loadAll();
     })
@@ -167,10 +152,7 @@ export class CourseComponent implements OnInit {
       'started': this.started.value,
       'finished': this.finished.value,
       'type': this.type.value,
-      'numberOfStudents': this.numberOfStudents.value,
-      'studentsFinishedCourse': this.studentsFinishedCourse.value,
-      'instructor': this.instructor.value,
-      'theory': this.theory.value
+      'instructor': this.instructor.value
     };
 
     return this.serviceCourse.updateAsset(form.get('Coursekey').value, this.asset)
@@ -226,10 +208,7 @@ export class CourseComponent implements OnInit {
         'started': null,
         'finished': null,
         'type': null,
-        'numberOfStudents': null,
-        'studentsFinishedCourse': null,
-        'instructor': null,
-        'theory': null
+        'instructor': null
       };
 
       if (result.Coursekey) {
@@ -262,28 +241,10 @@ export class CourseComponent implements OnInit {
         formObject.type = null;
       }
 
-      if (result.numberOfStudents) {
-        formObject.numberOfStudents = result.numberOfStudents;
-      } else {
-        formObject.numberOfStudents = null;
-      }
-
-      if (result.studentsFinishedCourse) {
-        formObject.studentsFinishedCourse = result.studentsFinishedCourse;
-      } else {
-        formObject.studentsFinishedCourse = null;
-      }
-
       if (result.instructor) {
         formObject.instructor = result.instructor;
       } else {
         formObject.instructor = null;
-      }
-
-      if (result.theory) {
-        formObject.theory = result.theory;
-      } else {
-        formObject.theory = null;
       }
 
       this.myForm.setValue(formObject);
@@ -307,10 +268,7 @@ export class CourseComponent implements OnInit {
       'started': null,
       'finished': null,
       'type': null,
-      'numberOfStudents': null,
-      'studentsFinishedCourse': null,
-      'instructor': null,
-      'theory': null
+      'instructor': null
       });
   }
 
